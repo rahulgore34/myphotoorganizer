@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+.light-theme {
+    --bg-color: #f5f5f5; // Default light theme color
+    --text-color: #333; // Default light theme text color
+    --btn-bg-color: #a8a6a6;
+  }
+
+.dark-theme {
+  --bg-color: #0a102f; // Dark theme color
+  --text-color: #fff; // Dark theme text color
+  --btn-bg-color: #3e4b8c; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-color);
+  color: var(--text-color);
+}

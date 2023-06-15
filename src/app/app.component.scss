@@ -1,0 +1,12 @@
+.theme-switcher-wrap {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 16px;
+    margin-top: 10px;
+    button {
+        &:nth-child(1) {
+            margin-right: 10px;
+        }
+    }
+}
