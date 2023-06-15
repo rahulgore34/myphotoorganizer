@@ -1,12 +1,41 @@
 .theme-switcher-wrap {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin-right: 16px;
-    margin-top: 10px;
-    button {
-        &:nth-child(1) {
-            margin-right: 10px;
-        }
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 16px;
+  margin-top: 10px;
+  button {
+    &:nth-child(1) {
+      margin-right: 6px;
     }
+  }
+
+  .btn {
+    display: inline-block;
+    border-radius: 50%;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    font-size: 7px;
+    border: 0;
+    transition: all 0.4s;
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+  }
+
+  .btn-dark {
+  background-color: var(--btn-dark-bg);
+  color: var(--btn-dark-text);
+  }
+
+  .btn-light {
+    background-color: var(--btn-light-bg);
+    color: var(--btn-light-text);
+    border: 1px solid var(--btn-light-text);
+  }
 }

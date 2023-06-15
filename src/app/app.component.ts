@@ -8,12 +8,13 @@ import { ThemeService } from './shared/service/theme.service';
 })
 export class AppComponent implements AfterViewInit {
   title = 'myphotos';
-
+  selectedTheme = 'dark';
   constructor(private themeService: ThemeService) {}
   ngAfterViewInit(): void {
-    this.setTheme('dark');
+    this.setTheme(this.selectedTheme);
   }
   setTheme(theme: string) {
+    this.selectedTheme = theme;
    if(theme === 'dark') {
     this.themeService.setDarkTheme();
    } else {

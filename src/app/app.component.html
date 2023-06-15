@@ -1,6 +1,6 @@
 <div class="theme-switcher-wrap">
-  <button (click)="setTheme('dark')">Dark</button>
-  <button (click)="setTheme('light')">Light</button>
+  <button (click)="setTheme('dark')" class="btn btn-dark" [disabled]="selectedTheme === 'dark'">Dark</button>
+  <button (click)="setTheme('light')" class="btn btn-light" [disabled]="selectedTheme === 'light'">Light</button>
 
 </div>
 <router-outlet></router-outlet>
