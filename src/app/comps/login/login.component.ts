@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpdataService } from 'src/app/shared/service/httpdata.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { HttpdataService } from 'src/app/shared/service/httpdata.service';
 export class LoginComponent implements OnInit {
   registrationForm!: FormGroup;
   formBtnText = 'Register';
-  constructor(private fb: FormBuilder, private httpService: HttpdataService) { }
+  constructor(private fb: FormBuilder, private httpService: HttpdataService, private router: Router) { }
   ngOnInit(): void {
     this.createAuthForm();
     this.httpService.getMethod('photoownerusers').subscribe(res=> {
@@ -37,8 +38,11 @@ export class LoginComponent implements OnInit {
     const reqUrl = this.formBtnText === 'Login' ? 'photoownerusers/signin' : 'photoownerusers/signup';
     this.httpService.postData(req, reqUrl).subscribe(
       {
-        next: (v) => {
+        next: (v: any) => {
+          if(v && v.status === 200 ) {
           console.log('RES ',v);
+            this.router.navigate(['dashboard']);
+          }
           
         },
         error: (e) => console.error('ERR ',e),

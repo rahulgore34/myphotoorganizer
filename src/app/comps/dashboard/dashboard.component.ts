@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  testGetApi() {
+    console.log('GET API');
+  }
+
+  testPostApi() {
+    console.log('POST API');
+
+  }
 }
