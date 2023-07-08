@@ -1,21 +1,22 @@
 <section class="login-container">
     <section class="login-form-wrap">
-        <form>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
             <h1>Create Your Space Here</h1>
             <div class="form-element">
                 <label for="username">Your User Name</label>
-                <input type="text" id="username">
+                <input type="text" id="username" formControlName="username">
             </div>
             <div class="form-element">
                 <label for="password">Your Password</label>
-                <input type="password" id="password">
+                <input type="password" id="password" formControlName="password">
             </div>
-            <div class="form-element">
+            <div class="form-element" *ngIf="showConfirmControl">
                 <label for="cpassword">Confirm Password</label>
-                <input type="password" id="cpassword">
+                <input type="password" id="cpassword" formControlName="confirmpassword" name="confirmpassword">
             </div>
             <div class="form-element">
-                <button type="submit">Register</button>
+                <button type="submit" [disabled]="registrationForm.invalid">{{formBtnText}}</button>
+                <p class="login-container_alreadyauth-txt" (click)="switchAuthForm('login')">Already signed up? Click <span>here</span> to login</p>
             </div>
         </form>
     </section>
