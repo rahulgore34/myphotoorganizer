@@ -14,9 +14,9 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private httpService: HttpdataService, private router: Router) { }
   ngOnInit(): void {
     this.createAuthForm();
-    this.httpService.getMethod('photoownerusers').subscribe(res=> {
-      console.log('RESPONSE ',res);
-      
+    this.httpService.getMethod('photoownerusers').subscribe(res => {
+      console.log('RESPONSE ', res);
+
     })
   }
 
@@ -39,15 +39,15 @@ export class LoginComponent implements OnInit {
     this.httpService.postData(req, reqUrl).subscribe(
       {
         next: (v: any) => {
-          if(v && v.status === 200 ) {
-          console.log('RES ',v);
+          if (v && v.status === 200) {
+            console.log('RES ', v);
             this.router.navigate(['dashboard']);
           }
-          
+
         },
-        error: (e) => console.error('ERR ',e),
-        complete: () => console.info('complete') 
-    }
+        error: (e) => console.error('ERR ', e),
+        complete: () => console.info('complete')
+      }
     );
 
   }

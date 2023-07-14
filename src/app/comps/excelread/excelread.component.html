@@ -1,0 +1,12 @@
+<div class="rg-container d-flex-col">
+    <div>
+        <a href="/assets/exceltemplate/Rahul.xlsx" download class="btn">
+            Download Template
+        </a>
+    </div>
+ 
+    <div #fileDropZone class="file-drop-zone" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
+        (drop)="onDrop($event)">
+        <p>Drag and drop files here or click to select</p>
+    </div>
+</div>
