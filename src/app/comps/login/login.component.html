@@ -1,7 +1,7 @@
 <section class="login-container">
     <section class="login-form-wrap">
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-            <h1>Create Your Space Here</h1>
+            <h1>{{headingFormName}}</h1>
             <div class="form-element">
                 <label for="username">Your User Name</label>
                 <input type="text" id="username" formControlName="username">
@@ -16,7 +16,7 @@
             </div>
             <div class="form-element">
                 <button type="submit" [disabled]="registrationForm.invalid">{{formBtnText}}</button>
-                <p class="login-container_alreadyauth-txt" (click)="switchAuthForm('login')">Already signed up? Click <span>here</span> to login</p>
+                <p class="login-container_alreadyauth-txt" (click)="switchAuthForm('login')">{{alreadyLoginStatus}}? Click <span>here</span> to login</p>
             </div>
         </form>
     </section>
