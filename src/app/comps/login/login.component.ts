@@ -11,6 +11,8 @@ import { HttpdataService } from 'src/app/shared/service/httpdata.service';
 export class LoginComponent implements OnInit {
   registrationForm!: FormGroup;
   formBtnText = 'Register';
+  headingFormName ='Create Your Space Here';
+  alreadyLoginStatus = 'Already Login'
   constructor(private fb: FormBuilder, private httpService: HttpdataService, private router: Router) { }
   ngOnInit(): void {
     this.createAuthForm();
@@ -53,8 +55,16 @@ export class LoginComponent implements OnInit {
   }
   showConfirmControl = true;
   switchAuthForm(whichForm: string) {
-    this.formBtnText = 'Login';
+    if(this.showConfirmControl==true){
+      this.formBtnText = 'Login'
+      this.headingFormName = 'Login here'
+      this.alreadyLoginStatus ='Register your account'
+    }else{
+      this.formBtnText = 'Register'
+      this.headingFormName = 'Create Your Space Here'
+      this.alreadyLoginStatus ='Aleardy Login'
+    }
     this.registrationForm.removeControl('confirmpassword');
-    this.showConfirmControl = false;
+    this.showConfirmControl = !this.showConfirmControl;
   }
 }
