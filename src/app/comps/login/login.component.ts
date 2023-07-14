@@ -12,7 +12,11 @@ export class LoginComponent implements OnInit {
   registrationForm!: FormGroup;
   formBtnText = 'Register';
   headingFormName ='Create Your Space Here';
-  alreadyLoginStatus = 'Already Login'
+  alreadyLoginStatus = 'Already Login';
+  showPassword: boolean = false;
+  showConfirmPassword:boolean = false;
+  changeType:string = 'password';
+  ConfirmChangeType:string = 'password';
   constructor(private fb: FormBuilder, private httpService: HttpdataService, private router: Router) { }
   ngOnInit(): void {
     this.createAuthForm();
@@ -66,5 +70,13 @@ export class LoginComponent implements OnInit {
     }
     this.registrationForm.removeControl('confirmpassword');
     this.showConfirmControl = !this.showConfirmControl;
+  }
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+    this.changeType = this.showPassword? 'text':'password';
+  }
+  toggleConfirmPasswordVisibility() {
+    this.showConfirmPassword = !this.showConfirmPassword;
+    this.ConfirmChangeType = this.showConfirmPassword? 'text':'password';
   }
 }

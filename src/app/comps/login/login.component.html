@@ -8,11 +8,13 @@
             </div>
             <div class="form-element">
                 <label for="password">Your Password</label>
-                <input type="password" id="password" formControlName="password">
+                <input [type]="changeType" formControlName="password">
+                <span class="eyeicon" (click)="togglePasswordVisibility()"><i style="color: blue;" [ngClass]="{ 'fa fa-eye': showPassword, 'fa-solid fa-eye-slash': !showPassword }"></i></span>
             </div>
             <div class="form-element" *ngIf="showConfirmControl">
                 <label for="cpassword">Confirm Password</label>
-                <input type="password" id="cpassword" formControlName="confirmpassword" name="confirmpassword">
+                <input [type]="ConfirmChangeType" formControlName="password" id="cpassword" formControlName="confirmpassword" name="confirmpassword">
+                <span class="eyeiconConPassword" (click)="toggleConfirmPasswordVisibility()"><i style="color: blue;" [ngClass]="{ 'fa fa-eye': showConfirmPassword, 'fa-solid fa-eye-slash': !showConfirmPassword }"></i></span>
             </div>
             <div class="form-element">
                 <button type="submit" [disabled]="registrationForm.invalid">{{formBtnText}}</button>
