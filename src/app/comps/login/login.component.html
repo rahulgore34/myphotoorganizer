@@ -5,6 +5,11 @@
             <div class="form-element">
                 <label for="username">Your User Name</label>
                 <input type="text" id="username" formControlName="username">
+                <div
+               style="color: red;" 
+                *ngIf="registrationForm.get('username')?.errors && ( registrationForm.get('username')?.dirty || submitted)">
+                    <div *ngIf="registrationForm.get('username')?.hasError('required')">Name is required.</div>
+                  </div>
             </div>
             <div class="form-element">
                 <label for="password">Your Password</label>
@@ -15,9 +20,17 @@
                 <label for="cpassword">Confirm Password</label>
                 <input [type]="ConfirmChangeType" formControlName="password" id="cpassword" formControlName="confirmpassword" name="confirmpassword">
                 <span class="eyeiconConPassword" (click)="toggleConfirmPasswordVisibility()"><i style="color: blue;" [ngClass]="{ 'fa fa-eye': showConfirmPassword, 'fa-solid fa-eye-slash': !showConfirmPassword }"></i></span>
+                <input type="password" id="cpassword" formControlName="confirmpassword" name="confirmpassword">
+                <div
+                style="color: red;" 
+                 *ngIf="registrationForm.get('confirmpassword')?.errors && ( registrationForm.get('confirmpassword')?.dirty || submitted)">
+                     <div *ngIf="registrationForm.get('confirmpassword')?.hasError('required')">Name is required.</div>
+                     <div *ngIf="registrationForm.get('confirmpassword')?.hasError('confirmPasswordValidator')">Must match.</div>
+                  
+                    </div>
             </div>
             <div class="form-element">
-                <button type="submit" [disabled]="registrationForm.invalid">{{formBtnText}}</button>
+                <button type="submit" >{{formBtnText}}</button>
                 <p class="login-container_alreadyauth-txt" (click)="switchAuthForm('login')">{{alreadyLoginStatus}}? Click <span>here</span> to login</p>
             </div>
         </form>
