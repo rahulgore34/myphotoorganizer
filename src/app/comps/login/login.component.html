@@ -8,21 +8,31 @@
                 <div
                style="color: red;" 
                 *ngIf="registrationForm.get('username')?.errors && ( registrationForm.get('username')?.dirty || submitted)">
-                    <div *ngIf="registrationForm.get('username')?.hasError('required')">Name is required.</div>
+                    <div class="errorMessage" *ngIf="registrationForm.get('username')?.hasError('required')">Name is required.</div>
+                    <div class="errorMessage" *ngIf="registrationForm.get('username')?.hasError('pattern')">Only 8 Alphanumeric characters allowed</div>
                   </div>
             </div>
             <div class="form-element">
                 <label for="password">Your Password</label>
-                <input type="password" id="password" formControlName="password">
+                <input [type]="changeType" formControlName="password">
+                <span class="eyeicon" (click)="togglePasswordVisibility()"><i style="color: blue;" [ngClass]="{ 'fa fa-eye': showPassword, 'fa-solid fa-eye-slash': !showPassword }"></i></span>
+                <div
+                style="color: red;" 
+                 *ngIf="registrationForm.get('password')?.errors && ( registrationForm.get('password')?.dirty || submitted)">
+                     <div class="errorMessage" *ngIf="registrationForm.get('password')?.hasError('required')">Password is required.</div>
+                     <div class="errorMessage" *ngIf="registrationForm.get('password')?.hasError('minlength')">Minimum 3 characters required</div>
+                     <div class="errorMessage" *ngIf="registrationForm.get('password')?.hasError('maxlength')">Only 8 characters allowed</div>
+                   </div>
             </div>
             <div class="form-element" *ngIf="showConfirmControl">
                 <label for="cpassword">Confirm Password</label>
-                <input type="password" id="cpassword" formControlName="confirmpassword" name="confirmpassword">
+                <input [type]="ConfirmChangeType" formControlName="password" id="cpassword" formControlName="confirmpassword" name="confirmpassword">
+                <span class="eyeiconConPassword" (click)="toggleConfirmPasswordVisibility()"><i style="color: blue;" [ngClass]="{ 'fa fa-eye': showConfirmPassword, 'fa-solid fa-eye-slash': !showConfirmPassword }"></i></span>
                 <div
                 style="color: red;" 
                  *ngIf="registrationForm.get('confirmpassword')?.errors && ( registrationForm.get('confirmpassword')?.dirty || submitted)">
-                     <div *ngIf="registrationForm.get('confirmpassword')?.hasError('required')">Name is required.</div>
-                     <div *ngIf="registrationForm.get('confirmpassword')?.hasError('confirmPasswordValidator')">Must match.</div>
+                     <div class="errorMessage" *ngIf="registrationForm.get('confirmpassword')?.hasError('required')">Confirm Password is required.</div>
+                     <div class="errorMessage" *ngIf="registrationForm.get('confirmpassword')?.hasError('confirmPasswordValidator')">Must match with password</div>
                   
                     </div>
             </div>

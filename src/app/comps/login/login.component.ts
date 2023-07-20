@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpdataService } from 'src/app/shared/service/httpdata.service';
 import {ConfirmPasswordValidator} from '../../shared/validations/passwordmatch';
@@ -12,7 +12,11 @@ export class LoginComponent implements OnInit {
   registrationForm!: FormGroup;
   formBtnText = 'Register';
   headingFormName ='Create Your Space Here';
-  alreadyLoginStatus = 'Already Login'
+  alreadyLoginStatus = 'Already Login';
+  showPassword: boolean = false;
+  showConfirmPassword:boolean = false;
+  changeType:string = 'password';
+  ConfirmChangeType:string = 'password';
   constructor(private fb: FormBuilder, private httpService: HttpdataService, private router: Router) { }
   ngOnInit(): void {
     this.createAuthForm();
@@ -24,8 +28,8 @@ export class LoginComponent implements OnInit {
 
   createAuthForm() {
     this.registrationForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      username: new FormControl('', [Validators.required,Validators.pattern("^[a-zA-Z0-9]{8}$")]),
+      password: new FormControl('', [Validators.required,Validators.maxLength(8),Validators.minLength(3)]),
       confirmpassword: new FormControl('', Validators.required)
     }, ConfirmPasswordValidator)
 
@@ -57,16 +61,26 @@ submitted = false;
   showConfirmControl = true;
   switchAuthForm(whichForm: string) {
     if(this.showConfirmControl==true){
+      this.registrationForm.removeControl('confirmpassword');
       this.formBtnText = 'Login'
       this.headingFormName = 'Login here'
       this.alreadyLoginStatus ='Register your account'
     }else{
+      this.registrationForm.addControl('confirmpassword', this.fb.control(''));
       this.formBtnText = 'Register'
       this.headingFormName = 'Create Your Space Here'
       this.alreadyLoginStatus ='Aleardy Login'
+      
     }
-    this.registrationForm.removeControl('confirmpassword');
     this.showConfirmControl = !this.showConfirmControl;
+  }
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+    this.changeType = this.showPassword? 'text':'password';
+  }
+  toggleConfirmPasswordVisibility() {
+    this.showConfirmPassword = !this.showConfirmPassword;
+    this.ConfirmChangeType = this.showConfirmPassword? 'text':'password';
   }
 
 
