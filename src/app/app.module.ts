@@ -8,19 +8,22 @@ import { DashboardComponent } from './comps/dashboard/dashboard.component';
 import { LoginComponent } from './comps/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ExcelreadComponent } from './comps/excelread/excelread.component';
+import { ExpenseTrackerComponent } from './comps/expense-tracker/expense-tracker.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'excel', component: ExcelreadComponent }
+  { path: 'excel', component: ExcelreadComponent },
+  { path: 'expenseTracker', component: ExpenseTrackerComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ExcelreadComponent
+    ExcelreadComponent,
+    ExpenseTrackerComponent
   ],
   imports: [
     BrowserModule,

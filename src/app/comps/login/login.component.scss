@@ -1,9 +1,16 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .login-container {
     position: relative;
     width: 380px;
     height: 350px;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.1);
+
     form {
         position: absolute;
         inset: 4px;
@@ -13,20 +20,25 @@
         z-index: 2;
         display: flex;
         flex-direction: column;
+
         h1 {
             font-weight: 500;
             text-align: center;
             letter-spacing: 0.1em;
             margin-bottom: 0.8em;
         }
+
         label {
             font-size: 0.7em;
         }
+
         .form-element {
             margin-bottom: 0.5em;
+
             input {
                 width: 100%;
             }
+
             button {
                 width: 100%;
                 cursor: pointer;
@@ -40,29 +52,38 @@
     .login-container_alreadyauth-txt {
         margin: 8px 0;
         padding: 0;
-        font-size: 12px; 
+        font-size: 12px;
         text-align: right;
+
         span {
             color: var(--text-link-color);
             cursor: pointer;
         }
     }
 }
+
 .eyeicon {
     position: absolute;
     top: 41%;
     right: 44px;
     transform: translateY(-50%);
     cursor: pointer;
-  }
-  .eyeiconConPassword{
+}
+
+.eyeiconConPassword {
     position: absolute;
     top: 54%;
     right: 44px;
     transform: translateY(-50%);
     cursor: pointer;
-  }
-  .errorMessage{
+}
+
+.errorMessage {
     font-size: 10px;
     margin-top: 5px;
-  }
+}
+
+.headingFormName {
+    font-size: large;
+    font-weight: 100;
+}

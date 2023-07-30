@@ -1,7 +1,8 @@
+<section class="body">
 <section class="login-container">
     <section class="login-form-wrap">
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-            <h1>{{headingFormName}}</h1>
+            <h1 class="headingFormName">{{headingFormName}}</h1>
             <div class="form-element">
                 <label for="username">Your User Name</label>
                 <input type="text" id="username" formControlName="username">
@@ -9,7 +10,7 @@
                style="color: red;" 
                 *ngIf="registrationForm.get('username')?.errors && ( registrationForm.get('username')?.dirty || submitted)">
                     <div class="errorMessage" *ngIf="registrationForm.get('username')?.hasError('required')">Name is required.</div>
-                    <div class="errorMessage" *ngIf="registrationForm.get('username')?.hasError('pattern')">Only 8 Alphanumeric characters allowed</div>
+                    <!-- <div class="errorMessage" *ngIf="registrationForm.get('username')?.hasError('pattern')">Only 8 Alphanumeric characters allowed</div> -->
                   </div>
             </div>
             <div class="form-element">
@@ -42,4 +43,5 @@
             </div>
         </form>
     </section>
+</section>
 </section>

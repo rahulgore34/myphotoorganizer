@@ -1,0 +1,112 @@
+<section>
+  <h3 class="heading">Expense Tracker Table:</h3>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Expense Date</th>
+        <th>Expense Tittle</th>
+        <th>Expense Amount</th>
+        <th>Expense Payment Mode</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>12 march</td>
+        <td>Dress</td>
+        <td>1000</td>
+        <td>Online</td>
+        <td>
+          <button type="button" class="btn btn-primary actionButton" (click)="editExpenseData()" data-toggle="modal"
+            data-target="#exampleModal" >Edit</button>
+          <button type="button" class="btn btn-danger actionButton">Delete</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>24 April</td>
+        <td>Travelling</td>
+        <td>5000</td>
+        <td>Credit Card</td>
+        <td>
+          <button type="button" class="btn btn-primary actionButton" (click)="editExpenseData()" data-toggle="modal"
+            data-target="#exampleModal" >Edit</button>
+          <button type="button" class="btn btn-danger actionButton">Delete</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>3</td>
+        <td>09 march</td>
+        <td>Shopping</td>
+        <td>8000</td>
+        <td>Cash</td>
+        <td>
+          <button type="button" class="btn btn-primary actionButton" (click)="editExpenseData()" data-toggle="modal"
+            data-target="#exampleModal" >Edit</button>
+          <button type="button" class="btn btn-danger actionButton">Delete</button>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="modal" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title headingColor" id="editModalLabel">Edit Expense Data</h5>
+          <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="ExpenseTracker">
+          <div class="modal-body">
+            <div class="form-group row">
+              <label for="ExpenseDate" class="col-sm-2 col-form-label headingColor">Date:</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="ExpenseDate" placeholder="Expense Date" name="expenseDate"
+                  formControlName="expenseDate">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="ExpenseTittle" class="col-sm-2 col-form-label headingColor">Tittle:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="ExpenseTittle" placeholder="Expense Tittle"
+                  name="expenseTittle" formControlName="expenseTittle">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="ExpenseAmount" class="col-sm-2 col-form-label headingColor">Amount:</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="ExpenseAmount" placeholder="Expense Amount"
+                  name="expenseAmount" formControlName="expenseAmount">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="ExpensePaymentMode" class="col-sm-2 col-form-label headingColor">Payment Mode:</label>
+              <select class="form-select" id="selectExample" class="col-sm-7 selectMode" [(ngModel)]="selected" name="expensePaymentMode"
+                formControlName="expensePaymentMode">
+                <option value="selectedOption" disabled>Select an option...</option>
+                <option value="Cash">Cash</option>
+                <option value="creditCard">Credit Card</option>
+                <option value="debitCard">Debit Card</option>
+                <option value="netBanking">Netbanking</option>
+                <option value="UPI">UPI</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="saveExpenseData()">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

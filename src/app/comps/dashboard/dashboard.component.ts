@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpdataService } from 'src/app/shared/service/httpdata.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { HttpdataService } from 'src/app/shared/service/httpdata.service';
 })
 export class DashboardComponent {
 
-  constructor(private httpDataService: HttpdataService) { }
+  constructor(private httpDataService: HttpdataService, private router:Router) { }
   testGetApi() {
     console.log('GET API');
     this.httpDataService.getMethod('photoownerusers/testget').subscribe(res1 => {
@@ -25,5 +26,9 @@ export class DashboardComponent {
     }, err => {
       console.log('ERROR ', err);
     })
+  }
+
+  myExpenseTracker(){
+   this.router.navigate(['expenseTracker'])
   }
 }

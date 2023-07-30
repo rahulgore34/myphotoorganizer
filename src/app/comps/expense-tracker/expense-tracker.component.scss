@@ -1,0 +1,57 @@
+.styled-table {
+    width: 70%;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px;
+    border: 2px solid black;
+}
+
+.styled-table thead {
+    background-color: #2980b9;
+    color: #fff;
+    font-size: smaller;
+
+}
+
+.styled-table th {
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table td {
+    padding: 3px;
+    border-bottom: 1px solid #ddd;
+    font-size: 10px;
+    text-align: center;
+}
+
+.styled-table tbody>tr:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.heading {
+    margin: 40px;
+}
+
+.actionButton {
+    padding: 2px 4px;
+margin-right: 5px;
+    font-size: 10px;
+    cursor: pointer;
+}
+.tableInput{
+    width: 85PX;
+    font-size: 10px;
+    padding: 2px;
+}
+.selectMode{
+    padding: 7px;
+    margin: 13px;
+}
+.headingColor{
+    color: black;
+}
