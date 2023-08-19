@@ -1,0 +1,14 @@
+a {
+    color: yellow;
+    &:hover {
+        color: white;
+    }
+margin-left: 10px;
+padding: 10px;
+border: 1px solid yellowgreen;
+
+}
+
+.active {
+color: aqua;
+}

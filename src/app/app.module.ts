@@ -3,33 +3,62 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
-import {HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './comps/dashboard/dashboard.component';
 import { LoginComponent } from './comps/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ExcelreadComponent } from './comps/excelread/excelread.component';
+import { RGHttpInterceptor } from './http.interceptor';
+import { ExpensetrackerComponent } from './comps/dashboard/expensetracker/expensetracker.component';
+import { EmitrackerComponent } from './comps/dashboard/emitracker/emitracker.component';
+import { AppRoutingModule } from './app-routing.module';
+import { WorkspaceComponent } from './comps/workspace/workspace.component';
+import { LoantrackerComponent } from './comps/dashboard/loantracker/loantracker.component';
+import { RgtableComponent } from './shared/rgtable/rgtable.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
+
+  { path: 'dashboard', component: DashboardComponent, 
+children: [
+  {
+    path:'expensetracker', component: ExpensetrackerComponent
+  },
+  {
+    path:'emitracker', component: EmitrackerComponent
+  },
+]
+},
   { path: 'login', component: LoginComponent },
-  { path: 'excel', component: ExcelreadComponent }
+  { path: 'excel', component: ExcelreadComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ExcelreadComponent
+    ExcelreadComponent,
+    ExpensetrackerComponent,
+    EmitrackerComponent,
+    WorkspaceComponent,
+    LoantrackerComponent,
+    RgtableComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  exports: [ ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RGHttpInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

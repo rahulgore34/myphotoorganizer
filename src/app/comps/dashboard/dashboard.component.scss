@@ -1,0 +1,15 @@
+.dashboard-wrapper {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    min-height: 100vh;
+
+    #sidebar {
+        background-color: #d37d14;
+        color: #111;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}

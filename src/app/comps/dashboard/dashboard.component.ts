@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { HttpdataService } from 'src/app/shared/service/httpdata.service';
 
 @Component({
@@ -11,7 +13,7 @@ export class DashboardComponent {
   constructor(private httpDataService: HttpdataService) { }
   testGetApi() {
     console.log('GET API');
-    this.httpDataService.getMethod('photoownerusers/testget').subscribe(res1 => {
+    this.httpDataService.getMethod1('photoownerusers/testget').subscribe(res1 => {
       console.log('RES1 ', res1);
     }, err => {
       console.log('ERROR ', err);

@@ -48,7 +48,8 @@ submitted = false;
         next: (v: any) => {
           if (v && v.status === 200) {
             console.log('RES ', v);
-            this.router.navigate(['dashboard']);
+            localStorage.setItem('token',v.accessToken);
+            this.router.navigate(['workspace']);
           }
 
         },

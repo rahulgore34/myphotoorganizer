@@ -1,0 +1,17 @@
+<table>
+    <thead>
+        <th>Sr.No.</th>
+        <th *ngFor="let c of cols">{{c.header}}</th>
+        <th></th>
+    </thead>
+    <tbody>
+       <tr *ngFor="let r of tablearr;let i = index;">
+        <td>{{i+1}}</td>
+        <td *ngFor="let f of cols">{{r[f.field]}}</td>
+        <td>
+            <em class="fa fa-edit" (click)="onActionEmit('edit', r, i)" style="margin-right: 8px;cursor: pointer;"></em>
+            <em class="fa fa-trash-o" (click)="onActionEmit('delete', r, i)" style="margin-right: 8px;cursor: pointer;"></em>
+        </td>
+       </tr>
+    </tbody>
+</table>

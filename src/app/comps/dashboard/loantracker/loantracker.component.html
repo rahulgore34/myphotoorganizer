@@ -1,0 +1,55 @@
+<div class="rg-form-wrapper">
+
+    <form [formGroup]="loanTrackerForm" (ngSubmit)="onSubmit()">
+  <div style="display: flex;">
+    <div class="rg-control-wrapper">
+        <label for="loanno">Loan No</label>
+        <input type="text" class="rg-control-input" formControlName="loanno">
+    </div>
+    <div class="rg-control-wrapper">
+        <label for="loanno">Bank Name</label>
+        <input type="text" class="rg-control-input" formControlName="loanbankname">
+    </div>
+    <div class="rg-control-wrapper">
+        <label for="loanno">Book Date</label>
+        <input type="date" class="rg-control-input" formControlName="loanbookdate">
+    </div>
+    <div class="rg-control-wrapper" >
+        <label for="loanno">Loan Purpose</label>
+        <input type="text" class="rg-control-input" formControlName="loanpurpose">
+    </div>
+    <div class="rg-control-wrapper">
+        <label for="loanno">Loan Amount</label>
+        <input type="text" class="rg-control-input" formControlName="loanamount">
+    </div>
+    <div class="rg-control-wrapper" >
+        <label for="loanno">Loan Tenure</label>
+        <input type="text" class="rg-control-input" formControlName="loantenure">
+    </div>
+    <div class="rg-control-wrapper" >
+        <label for="loanno">Loan EMI</label>
+        <input type="text" class="rg-control-input" formControlName="loanemi">
+    </div>
+
+    <div class="rg-control-wrapper">
+        <label for="loanno">Outstanding Yrs</label>
+        <input type="text" class="rg-control-input" formControlName="loanpendingtime">
+    </div>
+    <div class="rg-control-wrapper">
+        <label for="loanno">Other Info</label>
+        <input type="text" class="rg-control-input" formControlName="loanadditionalinfo" >
+    </div>
+<div style="display: flex;flex-direction: column;justify-content: center;">
+    <div>
+        <button type="submit">Submit</button>
+    <button type="reset" (click)="loanTrackerForm.reset()">Reset</button>
+    </div>
+</div>
+  </div>
+       
+    </form>
+    <div>
+        <img src="../../../../assets//images/excelicon.png" alt="Excel Export" width="35" (click)="exportToExcel()">
+        <app-rgtable [tablearr]="loanTrackerList" [cols]="rgTableCols" (emitAction)="getEmittedAction($event)"></app-rgtable>
+    </div>
+</div>
